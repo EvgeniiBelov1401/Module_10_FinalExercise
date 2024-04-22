@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task_1.Modules
 {
-    internal class AddingTwoNumbers : IAddition
+    public class AddingTwoNumbers : IAddition
     {
         public long Sum(long Value1, long Value2)
         {
@@ -18,5 +18,7 @@ namespace Task_1.Modules
             Console.WriteLine($"{Value1} + {Value2} = {result}");
             Console.ForegroundColor = ConsoleColor.White;
         }
+
+       
     }
 }

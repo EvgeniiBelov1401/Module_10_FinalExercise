@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Task_1.Modules
 {
-    internal interface IAddition
-    {      
-        long Sum(long Value1, long Value2);
-        void ShowResult(long Value1, long Value2,long result);
+    internal interface ILogger
+    {
+        void Solve(IAddition addition);
+        void CorrectData(ref long val);
     }
 }

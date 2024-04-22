@@ -5,47 +5,26 @@ namespace Task_1
     internal class Program
     {
         /*
+         * Задание 1
          * Создайте консольный мини-калькулятор, который будет подсчитывать сумму двух чисел. 
          * Определите интерфейс для функции сложения числа и реализуйте его.
          * Дополнительно: добавьте конструкцию Try/Catch/Finally для проверки корректности введённого значения.
+         * 
+         * Задание 2
+         * Реализуйте механизм внедрения зависимостей: добавьте в мини-калькулятор логгер, используя материал 
+         * из скринкаста юнита 10.1.
+         * Дополнительно: текст ошибки, выводимый в логгере, окрасьте в красный цвет, а текст события — в синий цвет.
          */
-    
-        static void CorrectData(ref long val)
-        {
-            if (long.TryParse(Console.ReadLine(), out val) == false)
-            {
-                throw new FormatException("Введите корректные данные...");
-            }  
-        }
-        static void Solve()
-        {
-            try
-            {
-                long Value1 = default(long);
-                long Value2 = default(long);
 
-                Console.Write("Введите значение 1: ");
-                CorrectData(ref Value1);
 
-                Console.Write("Введите значение 2: ");
-                CorrectData(ref Value2);
-
-                IAddition addition = new AddingTwoNumbers();
-                long result = addition.Sum(Value1, Value2);
-                addition.ShowResult(Value1, Value2, result);
-            }
-            catch (FormatException ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(ex.Message);
-                Console.ForegroundColor = ConsoleColor.White;
-            }
-        }
+        
         static void Main(string[] args)
         {
             while (true)
             {
-                Solve();
+                IAddition addition = new AddingTwoNumbers();
+                ILogger Logger = new Logger();
+                Logger.Solve(addition);
 
                 Console.ReadLine();
                 Console.Clear();
