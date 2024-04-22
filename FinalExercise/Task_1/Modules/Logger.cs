@@ -31,7 +31,7 @@ namespace Task_1.Modules
                 CorrectData(ref Value2);
 
                 
-                long result = addition.Sum(Value1, Value2);                
+                long result = addition.Sum(Value1, Value2);
                 addition.ShowResult(Value1, Value2, result);
             }
             catch (FormatException ex)
@@ -40,7 +40,14 @@ namespace Task_1.Modules
                 Console.WriteLine(ex.Message);
                 Console.ForegroundColor = ConsoleColor.White;
             }
-            
+            catch (OverflowException)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Значение результата находится за пределами диапазона допустимых значений\n" +
+                    $"{long.MinValue} < Результат должен быть < {long.MaxValue}");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+
         }
        
     }

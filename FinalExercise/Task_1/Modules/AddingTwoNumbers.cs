@@ -10,7 +10,7 @@ namespace Task_1.Modules
     {
         public long Sum(long Value1, long Value2)
         {
-            return Value1 + Value2;
+            return checked(Value1 + Value2);
         }
         public void ShowResult(long Value1, long Value2, long result)
         {
